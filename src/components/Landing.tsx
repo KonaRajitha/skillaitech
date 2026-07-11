@@ -1,8 +1,10 @@
 import { motion } from "motion/react";
 import { ArrowRight, Sparkles, Brain, Target, Zap, BookOpen, MessageSquare, Trophy, Github, Twitter, Linkedin } from "lucide-react";
 import iconImg from "@/assets/skill-icon.jpeg";
-import robotImg from "@/assets/skill-robot.jpeg";
+import robotAsset from "@/assets/skill-robot-hero.jpeg.asset.json";
 import logoDark from "@/assets/skill-logo-dark.jpeg";
+import { IntroOverlay } from "./IntroOverlay";
+const robotImg = robotAsset.url;
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -12,6 +14,7 @@ const fadeUp = {
 export function Landing() {
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+      <IntroOverlay />
       {/* NAV */}
       <motion.header
         initial={{ y: -30, opacity: 0 }}
