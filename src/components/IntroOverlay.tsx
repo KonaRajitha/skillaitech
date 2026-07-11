@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ChevronDown } from "lucide-react";
-import robotAsset from "@/assets/skill-robot-hero.jpeg.asset.json";
+import robotAsset from "@/assets/skill-robot-popup.jpeg.asset.json";
 
 export function IntroOverlay() {
   const [hidden, setHidden] = useState(false);
