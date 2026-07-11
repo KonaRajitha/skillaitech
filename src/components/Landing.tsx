@@ -14,6 +14,7 @@ const fadeUp = {
 export function Landing() {
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+      <IntroOverlay />
       {/* NAV */}
       <motion.header
         initial={{ y: -30, opacity: 0 }}
