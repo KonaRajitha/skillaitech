@@ -1,10 +1,9 @@
 import { motion } from "motion/react";
 import { ArrowRight, Sparkles, Brain, Target, Zap, BookOpen, MessageSquare, Trophy, Github, Twitter, Linkedin } from "lucide-react";
-import iconImg from "@/assets/skill-icon.jpeg";
-import robotAsset from "@/assets/skill-robot-hero.jpeg.asset.json";
+import mascotAsset from "@/assets/skill-mascot.png.asset.json";
 import logoDark from "@/assets/skill-logo-dark.jpeg";
 import { IntroOverlay } from "./IntroOverlay";
-const robotImg = robotAsset.url;
+const mascotImg = mascotAsset.url;
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },

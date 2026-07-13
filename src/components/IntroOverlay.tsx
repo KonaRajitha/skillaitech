@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ChevronDown } from "lucide-react";
-import robotAsset from "@/assets/skill-robot-popup.jpeg.asset.json";
+import robotAsset from "@/assets/skill-mascot.png.asset.json";
 
 export function IntroOverlay() {
   const [hidden, setHidden] = useState(false);
@@ -92,28 +92,27 @@ export function IntroOverlay() {
               className="relative"
             >
               <motion.div
-                animate={{ y: [0, -12, 0] }}
+                animate={{ y: [0, -14, 0] }}
                 transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
                 className="relative"
-                style={{ transformOrigin: "bottom center" }}
               >
-                {/* container that gets a "wave" tilt */}
+                {/* container that gets a "wave" tilt — pivot on the right where icon sits so the robot on the left arcs up like a waving arm */}
                 <motion.div
-                  animate={{ rotate: [0, -6, 6, -6, 6, 0] }}
+                  animate={{ rotate: [0, -10, 8, -10, 8, 0] }}
                   transition={{
-                    duration: 1.6,
+                    duration: 1.8,
                     repeat: Infinity,
-                    repeatDelay: 1.2,
+                    repeatDelay: 1.4,
                     ease: "easeInOut",
                   }}
-                  style={{ transformOrigin: "50% 85%" }}
+                  style={{ transformOrigin: "70% 70%" }}
                 >
                   <img
                     src={robotAsset.url}
                     alt="Skill.Ai robot waving hello"
-                    className="w-[280px] sm:w-[360px] md:w-[420px] select-none pointer-events-none"
+                    className="w-[300px] sm:w-[380px] md:w-[440px] select-none pointer-events-none"
                     draggable={false}
-                    style={{ filter: "drop-shadow(0 40px 80px rgba(255,255,255,0.15))" }}
+                    style={{ filter: "drop-shadow(0 40px 80px rgba(255,255,255,0.25))" }}
                   />
                 </motion.div>
               </motion.div>
