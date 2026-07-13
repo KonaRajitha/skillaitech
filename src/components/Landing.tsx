@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { ArrowRight, Sparkles, Brain, Target, Zap, BookOpen, MessageSquare, Trophy, Github, Twitter, Linkedin } from "lucide-react";
 import mascotAsset from "@/assets/skill-mascot.png.asset.json";
-import logoDark from "@/assets/skill-logo-dark.jpeg";
+
 import { IntroOverlay } from "./IntroOverlay";
 const mascotImg = mascotAsset.url;
 
@@ -289,9 +289,10 @@ export function Landing() {
       {/* FOOTER */}
       <footer id="faq" className="border-t border-border py-14">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-3">
-            <img src={logoDark} alt="Skill.Ai" className="h-8 rounded" />
-          </div>
+          <a href="#" className="flex items-center gap-2.5">
+            <img src={mascotImg} alt="Skill.Ai" className="h-8 w-8" />
+            <span className="font-display font-semibold text-lg tracking-tight">Skill<span className="text-muted-foreground">.Ai</span></span>
+          </a>
           <p className="text-xs text-muted-foreground">© 2026 Skill.Ai — Practice smarter. Learn faster.</p>
           <div className="flex items-center gap-4 text-muted-foreground">
             <a href="#" className="hover:text-foreground transition"><Twitter className="h-4 w-4" /></a>
