@@ -23,7 +23,7 @@ export function Landing() {
       >
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <a href="#" className="flex items-center gap-2.5">
-            <img src={iconImg} alt="Skill.Ai" className="h-8 w-8 rounded-lg shadow-glow" />
+            <img src={mascotImg} alt="Skill.Ai" className="h-8 w-8 rounded-lg shadow-glow" />
             <span className="font-display font-semibold text-lg tracking-tight">Skill<span className="text-muted-foreground">.Ai</span></span>
           </a>
           <nav className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
@@ -115,7 +115,7 @@ export function Landing() {
               </motion.div>
 
               <motion.img
-                src={robotImg}
+                src={mascotImg}
                 alt="Skill.Ai robot"
                 className="relative mx-auto w-64 sm:w-80 animate-float"
                 style={{ filter: "drop-shadow(0 30px 60px rgba(255,255,255,0.12))" }}
@@ -257,7 +257,7 @@ export function Landing() {
             <div className="absolute inset-0 bg-grid opacity-40" />
             <div className="absolute -top-32 left-1/2 -translate-x-1/2 h-64 w-64 rounded-full bg-white/10 blur-3xl animate-pulse-glow" />
             <div className="relative">
-              <img src={iconImg} alt="" className="mx-auto h-16 w-16 rounded-2xl shadow-glow mb-6 animate-float" />
+              <img src={mascotImg} alt="" className="mx-auto h-16 w-16 rounded-2xl shadow-glow mb-6 animate-float" />
               <h2 className="font-display text-4xl sm:text-5xl font-semibold tracking-tight mb-4">
                 Ready to level up?
               </h2>
