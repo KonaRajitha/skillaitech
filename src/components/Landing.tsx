@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform } from "motion/react";
 import {
   ArrowRight, Sparkles, Brain, Target, Zap, BookOpen, MessageSquare, Trophy,
-  Github, Twitter, Linkedin, LogOut, UserRound, FileText, Search, Briefcase, Award, Rocket, PlaneIcon,
+  Github, Twitter, Linkedin, LogOut, UserRound, FileText, Search, Briefcase, Award, Rocket, Plane,
 } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
@@ -265,7 +265,7 @@ function RoadmapSection() {
               style={{ top: planeY }}
               className="sticky top-1/2 -translate-y-1/2 h-10 w-10 -translate-x-0 rounded-full bg-primary text-primary-foreground shadow-glow flex items-center justify-center"
             >
-              <PlaneIcon className="h-4 w-4 rotate-90" />
+              <Plane className="h-4 w-4 rotate-90" />
             </motion.div>
           </div>
 
