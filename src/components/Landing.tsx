@@ -260,10 +260,10 @@ function RoadmapSection() {
               style={{ height: lineFill }}
               className="absolute top-0 w-px bg-foreground"
             />
-            {/* Plane */}
+            {/* Plane travelling down the line */}
             <motion.div
               style={{ top: planeY }}
-              className="sticky top-1/2 -translate-y-1/2 h-10 w-10 -translate-x-0 rounded-full bg-primary text-primary-foreground shadow-glow flex items-center justify-center"
+              className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 h-10 w-10 rounded-full bg-primary text-primary-foreground shadow-glow flex items-center justify-center z-10"
             >
               <Plane className="h-4 w-4 rotate-90" />
             </motion.div>
