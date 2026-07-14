@@ -1,6 +1,9 @@
 import { motion } from "motion/react";
-import { ArrowRight, Sparkles, Brain, Target, Zap, BookOpen, MessageSquare, Trophy, Github, Twitter, Linkedin } from "lucide-react";
+import { ArrowRight, Sparkles, Brain, Target, Zap, BookOpen, MessageSquare, Trophy, Github, Twitter, Linkedin, LogOut } from "lucide-react";
+import { Link } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 import mascotAsset from "@/assets/skill-mascot.png.asset.json";
+import { supabase } from "@/integrations/supabase/client";
 
 import { IntroOverlay } from "./IntroOverlay";
 const mascotImg = mascotAsset.url;
