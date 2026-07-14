@@ -14,6 +14,12 @@ const fadeUp = {
 };
 
 export function Landing() {
+  const [email, setEmail] = useState<string | null>(null);
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data }) => setEmail(data.session?.user.email ?? null));
+    const { data: sub } = supabase.auth.onAuthStateChange((_e, s) => setEmail(s?.user.email ?? null));
+    return () => sub.subscription.unsubscribe();
+  }, []);
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <IntroOverlay />
