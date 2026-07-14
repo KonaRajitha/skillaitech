@@ -126,13 +126,13 @@ export function IntroOverlay() {
               className="mt-8 text-center px-6"
             >
               <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-3">
-                Hi, I'm Ai
+                Hi, I'm your assistant — not just AI
               </p>
               <h1 className="font-display text-4xl sm:text-6xl md:text-7xl font-semibold tracking-tighter">
                 Welcome to <span className="text-gradient">Skill.Ai</span>
               </h1>
               <p className="mt-4 text-sm sm:text-base text-muted-foreground max-w-md mx-auto">
-                Your personal Ai companion for mastering interviews, coding & more.
+                I'll walk with you from your first profile to your first offer letter.
               </p>
             </motion.div>
 
