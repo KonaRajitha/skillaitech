@@ -1,6 +1,9 @@
 import { motion } from "motion/react";
-import { ArrowRight, Sparkles, Brain, Target, Zap, BookOpen, MessageSquare, Trophy, Github, Twitter, Linkedin } from "lucide-react";
+import { ArrowRight, Sparkles, Brain, Target, Zap, BookOpen, MessageSquare, Trophy, Github, Twitter, Linkedin, LogOut } from "lucide-react";
+import { Link } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 import mascotAsset from "@/assets/skill-mascot.png.asset.json";
+import { supabase } from "@/integrations/supabase/client";
 
 import { IntroOverlay } from "./IntroOverlay";
 const mascotImg = mascotAsset.url;
@@ -11,6 +14,12 @@ const fadeUp = {
 };
 
 export function Landing() {
+  const [email, setEmail] = useState<string | null>(null);
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data }) => setEmail(data.session?.user.email ?? null));
+    const { data: sub } = supabase.auth.onAuthStateChange((_e, s) => setEmail(s?.user.email ?? null));
+    return () => sub.subscription.unsubscribe();
+  }, []);
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <IntroOverlay />
@@ -33,11 +42,25 @@ export function Landing() {
             <a href="#faq" className="hover:text-foreground transition">FAQ</a>
           </nav>
           <div className="flex items-center gap-3">
-            <button className="hidden sm:inline text-sm text-muted-foreground hover:text-foreground transition">Sign in</button>
-            <button className="group inline-flex items-center gap-1.5 rounded-full bg-primary text-primary-foreground px-4 py-2 text-sm font-medium hover:opacity-90 transition">
-              Get started
-              <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-0.5 transition-transform" />
-            </button>
+            {email ? (
+              <>
+                <span className="hidden sm:inline text-xs text-muted-foreground max-w-[160px] truncate">{email}</span>
+                <button
+                  onClick={async () => { await supabase.auth.signOut(); }}
+                  className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition"
+                >
+                  <LogOut className="h-3.5 w-3.5" /> Sign out
+                </button>
+              </>
+            ) : (
+              <>
+                <Link to="/auth" className="hidden sm:inline text-sm text-muted-foreground hover:text-foreground transition">Sign in</Link>
+                <Link to="/auth" className="group inline-flex items-center gap-1.5 rounded-full bg-primary text-primary-foreground px-4 py-2 text-sm font-medium hover:opacity-90 transition">
+                  Get started
+                  <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-0.5 transition-transform" />
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </motion.header>
