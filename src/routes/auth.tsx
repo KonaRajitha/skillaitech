@@ -6,10 +6,11 @@ import { lovable } from "@/integrations/lovable/index";
 import { submitSignupToGoogleForm } from "@/lib/gform";
 import { toast } from "sonner";
 import { Loader2, Mail, Phone, ArrowLeft } from "lucide-react";
-import mascotAsset from "@/assets/skill-mascot.png.asset.json";
+// import mascotAsset from "@/assets/skill-mascot.png";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
-const mascotImg = mascotAsset.url;
+const mascotImg = "/images/skill-mascot.png";
+const LEARNER_PLATFORM_URL = "https://learner.skillaitech.in/";
 
 export const Route = createFileRoute("/auth")({
   validateSearch: (s: Record<string, unknown>) => ({
@@ -50,10 +51,10 @@ function AuthPage() {
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data }) => {
-      if (data.session) window.location.assign(nextPath);
+      if (data.session) window.location.assign(LEARNER_PLATFORM_URL);
     });
     const { data: sub } = supabase.auth.onAuthStateChange((_e, session) => {
-      if (session) window.location.assign(nextPath);
+      if (session) window.location.assign(LEARNER_PLATFORM_URL);
     });
     return () => sub.subscription.unsubscribe();
   }, [navigate, nextPath]);
@@ -71,6 +72,8 @@ function AuthPage() {
         if (error) throw error;
       }
       toast.success("Welcome back!");
+      // Redirect to learner platform after successful sign in
+      window.location.assign(LEARNER_PLATFORM_URL);
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Sign in failed");
     } finally {
@@ -128,6 +131,8 @@ function AuthPage() {
       // Store student data in Google Form (fire-and-forget)
       submitSignupToGoogleForm({ fullName, phone, email, password });
       toast.success("Account verified! Welcome to Skill.Ai");
+      // Redirect to learner platform after successful signup
+      window.location.assign(LEARNER_PLATFORM_URL);
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Invalid code");
     } finally {
@@ -138,7 +143,7 @@ function AuthPage() {
   async function handleGoogle() {
     setLoading(true);
     try {
-      const returnTo = `${window.location.origin}/auth?next=${encodeURIComponent(nextPath)}`;
+      const returnTo = `${window.location.origin}/auth?next=${encodeURIComponent(LEARNER_PLATFORM_URL)}`;
       const result = await lovable.auth.signInWithOAuth("google", { redirect_uri: returnTo });
       if (result.error) { toast.error(result.error.message || "Google sign-in failed"); setLoading(false); return; }
       if (result.redirected) return;

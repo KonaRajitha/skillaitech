@@ -5,12 +5,13 @@ import {
 } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import mascotAsset from "@/assets/skill-mascot.png.asset.json";
 import { supabase } from "@/integrations/supabase/client";
 import { ThemeToggle } from "./ThemeToggle";
 import { IntroOverlay } from "./IntroOverlay";
 
-const mascotImg = mascotAsset.url;
+const mascotImg = "/images/skill-mascot.png";
+const LEARNER_PLATFORM_URL = "https://learner.skillaitech.in/";
+
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
   show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const } },
@@ -62,11 +63,11 @@ export function Landing() {
               </>
             ) : (
               <>
-                <Link to="/auth" className="hidden sm:inline text-sm text-muted-foreground hover:text-foreground transition">Sign in</Link>
-                <Link to="/auth" className="group inline-flex items-center gap-1.5 rounded-full bg-primary text-primary-foreground px-4 py-2 text-sm font-medium hover:opacity-90 transition">
+                <a href={LEARNER_PLATFORM_URL} className="hidden sm:inline text-sm text-muted-foreground hover:text-foreground transition">Sign in</a>
+                <a href={LEARNER_PLATFORM_URL} className="group inline-flex items-center gap-1.5 rounded-full bg-primary text-primary-foreground px-4 py-2 text-sm font-medium hover:opacity-90 transition">
                   Get started
                   <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-0.5 transition-transform" />
-                </Link>
+                </a>
               </>
             )}
           </div>
@@ -98,10 +99,10 @@ export function Landing() {
 
           <motion.div initial="hidden" animate="show" variants={fadeUp} transition={{ delay: 0.3 }}
             className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
-            <Link to="/auth" className="group inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-6 py-3 text-sm font-medium hover:opacity-90 transition shadow-glow">
+            <a href={LEARNER_PLATFORM_URL} className="group inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-6 py-3 text-sm font-medium hover:opacity-90 transition shadow-glow">
               Start free
               <ArrowRight className="h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
-            </Link>
+            </a>
             <a href="#journey" className="inline-flex items-center gap-2 rounded-full border border-border bg-card/40 backdrop-blur px-6 py-3 text-sm font-medium hover:bg-card/70 transition">
               See the roadmap
             </a>
@@ -181,10 +182,10 @@ export function Landing() {
               <p className="text-muted-foreground max-w-lg mx-auto mb-8">
                 Create your profile in under a minute. I'll take it from there.
               </p>
-              <Link to="/auth" className="group inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-7 py-3.5 text-sm font-medium hover:opacity-90 transition shadow-glow">
+              <a href={LEARNER_PLATFORM_URL} className="group inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-7 py-3.5 text-sm font-medium hover:opacity-90 transition shadow-glow">
                 Get started free
                 <ArrowRight className="h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
-              </Link>
+              </a>
             </div>
           </div>
         </motion.div>

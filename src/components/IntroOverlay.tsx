@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ChevronDown } from "lucide-react";
-import robotAsset from "@/assets/skill-mascot.png.asset.json";
+// import robotAsset from "@/assets/skill-mascot.png";
 
 export function IntroOverlay() {
   const [hidden, setHidden] = useState(false);
   const [progress, setProgress] = useState(0);
+  const robotImg = "/images/skill-mascot.png";
 
   useEffect(() => {
     // Lock scroll while intro is visible
@@ -108,7 +109,7 @@ export function IntroOverlay() {
                   style={{ transformOrigin: "70% 70%" }}
                 >
                   <img
-                    src={robotAsset.url}
+                    src={robotImg}
                     alt="Skill.Ai robot waving hello"
                     className="w-[300px] sm:w-[380px] md:w-[440px] select-none pointer-events-none"
                     draggable={false}
