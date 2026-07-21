@@ -138,7 +138,8 @@ function AuthPage() {
   async function handleGoogle() {
     setLoading(true);
     try {
-      const result = await lovable.auth.signInWithOAuth("google", { redirect_uri: window.location.origin });
+      const returnTo = `${window.location.origin}/auth?next=${encodeURIComponent(nextPath)}`;
+      const result = await lovable.auth.signInWithOAuth("google", { redirect_uri: returnTo });
       if (result.error) { toast.error(result.error.message || "Google sign-in failed"); setLoading(false); return; }
       if (result.redirected) return;
     } catch (err) {
