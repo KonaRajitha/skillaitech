@@ -12,6 +12,9 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 const mascotImg = mascotAsset.url;
 
 export const Route = createFileRoute("/auth")({
+  validateSearch: (s: Record<string, unknown>) => ({
+    next: typeof s.next === "string" ? s.next : "",
+  }),
   head: () => ({
     meta: [
       { title: "Sign in · Skill.Ai" },
@@ -21,12 +24,19 @@ export const Route = createFileRoute("/auth")({
   component: AuthPage,
 });
 
+function safeNext(next: string): string {
+  if (!next.startsWith("/") || next.startsWith("//")) return "/";
+  return next;
+}
+
 type Mode = "signin" | "signup";
 type Channel = "email" | "phone";
 type Step = "form" | "otp";
 
 function AuthPage() {
   const navigate = useNavigate();
+  const { next } = Route.useSearch();
+  const nextPath = safeNext(next);
   const [mode, setMode] = useState<Mode>("signin");
   const [channel, setChannel] = useState<Channel>("email");
   const [step, setStep] = useState<Step>("form");
@@ -40,13 +50,13 @@ function AuthPage() {
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data }) => {
-      if (data.session) navigate({ to: "/" });
+      if (data.session) window.location.assign(nextPath);
     });
     const { data: sub } = supabase.auth.onAuthStateChange((_e, session) => {
-      if (session) navigate({ to: "/" });
+      if (session) window.location.assign(nextPath);
     });
     return () => sub.subscription.unsubscribe();
-  }, [navigate]);
+  }, [navigate, nextPath]);
 
   // --- SIGN IN (password) ---
   async function handleSignIn(e: React.FormEvent) {
